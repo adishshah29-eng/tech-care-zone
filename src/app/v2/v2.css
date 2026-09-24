@@ -1,3 +1,8 @@
+body:has(.v2-root) {
+  background: #0a0d0a;
+  background-image: none;
+}
+
 .v2-root {
   --v2-bg: #0a0d0a;
   --v2-bg-raised: #12160f;

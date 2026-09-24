@@ -30,8 +30,8 @@ export function Devices2() {
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="relative aspect-[4/3] overflow-hidden rounded border border-[var(--v2-border)]">
             <Image
-              src="/v2/circuit.png"
-              alt="Macro photo of a smartphone circuit board"
+              src="/v2/circuit.webp"
+              alt="Macro photo of an iPhone motherboard during repair"
               fill
               className="object-cover"
             />

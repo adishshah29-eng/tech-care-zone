@@ -12,8 +12,8 @@ export function Hero2() {
     <section id="top" className="relative overflow-hidden border-b border-[var(--v2-border)]">
       <div className="absolute inset-0">
         <Image
-          src="/v2/hero.png"
-          alt="Technician repairing a smartphone under warm diagnostic light"
+          src="/v2/hero.webp"
+          alt="Technician repairing a smartphone under warm workshop lamp light"
           fill
           priority
           className="object-cover"

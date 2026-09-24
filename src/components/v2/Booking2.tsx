@@ -20,7 +20,7 @@ export function Booking2() {
   return (
     <section id="contact" className="relative border-b border-[var(--v2-border)] py-20 sm:py-28">
       <div className="absolute inset-0">
-        <Image src="/v2/workbench.png" alt="" fill className="object-cover opacity-15" />
+        <Image src="/v2/workbench.webp" alt="" fill className="object-cover opacity-15" />
         <div className="absolute inset-0 bg-[var(--v2-bg)]/85" />
       </div>
 
