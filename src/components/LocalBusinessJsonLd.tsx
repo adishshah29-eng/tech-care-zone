@@ -1,6 +1,6 @@
 import { appleServices, business, laptopServices } from "@/lib/content";
+import { siteUrl } from "@/lib/site";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export function LocalBusinessJsonLd() {
   const data = {

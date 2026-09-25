@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 const displayFont = Space_Grotesk({
   variable: "--font-display",
@@ -20,10 +21,9 @@ const specFont = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const title = "Tech Care Zone | iPhone, MacBook & Laptop Repair in Powai, Mumbai";
+const title = "iPhone, MacBook & Laptop Repair in Powai | Tech Care Zone";
 const description =
-  "Board-level repair for iPhone, iPad, MacBook, iMac and Lenovo, Dell, HP, Acer & Asus laptops in Powai, Mumbai. Genuine parts, 6-month warranty, same-day turnaround, free diagnosis.";
+  "Apple and laptop repair in Powai, Mumbai: iPhone, iPad, MacBook, iMac, Dell, HP, Lenovo. Genuine parts, 6-month warranty, same-day repairs, free diagnosis.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
