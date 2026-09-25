@@ -3,17 +3,21 @@
 import { useState, type FormEvent } from "react";
 import { MapPin, Phone, MessageCircle, Mail, Clock, ArrowRight } from "../icons";
 import { SectionHead3 } from "./SectionHead3";
-import { business, deviceOptions, issueOptions } from "@/lib/content";
+import { business, deviceOptions, issueOptions, readBookingForm, whatsappBookingUrl } from "@/lib/content";
 
 const fieldClass =
   "v3-border w-full bg-[var(--v3-white)] px-3.5 py-2.5 text-[0.95rem] font-medium text-[var(--v3-ink)] placeholder:text-[var(--v3-ink)]/40 focus:outline-none";
 
 export function Booking3() {
   const [submitted, setSubmitted] = useState(false);
+  const [waUrl, setWaUrl] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const url = whatsappBookingUrl(readBookingForm(e.currentTarget));
+    setWaUrl(url);
     setSubmitted(true);
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -50,7 +54,7 @@ export function Booking3() {
               <div className="v3-border bg-[var(--v3-yellow)] p-6 text-center">
                 <p className="text-[1.2rem] font-bold uppercase">Got it!</p>
                 <p className="mt-2 text-[0.95rem] font-medium">
-                  We&apos;ll reply within minutes. Urgent? Call or WhatsApp {business.phone}.
+                  WhatsApp should open with your details filled in, just hit send. <a href={waUrl} target="_blank" rel="noreferrer" className="underline">Didn&apos;t open? Tap here.</a> Urgent? Call or WhatsApp {business.phone}.
                 </p>
               </div>
             ) : (

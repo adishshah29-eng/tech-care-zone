@@ -8,6 +8,7 @@ import { Reviews } from "@/components/Reviews";
 import { BookingSection } from "@/components/BookingSection";
 import { ClosingCta } from "@/components/ClosingCta";
 import { Footer } from "@/components/Footer";
+import { TraceDivider } from "@/components/PcbArt1";
 
 export default function Home() {
   return (
@@ -15,14 +16,18 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         <Hero />
+        <TraceDivider />
         <Services />
         <Devices />
+        <TraceDivider chip />
         <WhyUs />
         <Process />
         <Reviews />
+        <TraceDivider />
         <BookingSection />
         <ClosingCta />
       </main>
+      <TraceDivider chip />
       <Footer />
     </>
   );

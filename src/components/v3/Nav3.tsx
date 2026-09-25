@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Logo } from "@/components/Logo";
 import { Menu, X } from "../icons";
 import { business } from "@/lib/content";
 
@@ -18,12 +19,7 @@ export function Nav3() {
     <header className="sticky top-0 z-50 border-b-4 border-[var(--v3-ink)] bg-[var(--v3-bg)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <a href="#top" className="flex items-center gap-3">
-          <span className="v3-border flex h-10 w-10 items-center justify-center bg-[var(--v3-yellow)] text-[14px] font-black">
-            {business.shortName}
-          </span>
-          <span className="hidden text-[1.1rem] font-bold uppercase sm:inline">
-            {business.name}
-          </span>
+          <Logo variant="dark" className="h-9 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">

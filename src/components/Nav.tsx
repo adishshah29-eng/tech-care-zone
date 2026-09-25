@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Logo } from "@/components/Logo";
 import { Menu, X } from "./icons";
 import { business } from "@/lib/content";
 
@@ -18,12 +19,7 @@ export function Nav() {
     <header className="sticky top-0 z-50 border-b border-[var(--paper-line-strong)] bg-[var(--paper)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
         <a href="#top" className="flex items-center gap-3">
-          <span className="font-spec flex h-9 w-9 items-center justify-center rounded border-2 border-[var(--ink)] text-[13px] font-semibold">
-            {business.shortName}
-          </span>
-          <span className="hidden font-display text-[1.05rem] font-bold sm:inline">
-            {business.name}
-          </span>
+          <Logo variant="dark" className="h-9 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">
@@ -41,7 +37,7 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="stamp-btn hidden rounded-sm bg-[var(--orange)] px-4 py-2 font-spec text-[13px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)] transition-transform hover:-rotate-1 sm:inline-block"
+            className="stamp-btn hidden rounded-sm bg-[var(--brand)] px-4 py-2 font-spec text-[13px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)] transition-transform hover:-rotate-1 sm:inline-block"
           >
             Book Repair
           </a>
@@ -72,7 +68,7 @@ export function Nav() {
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-sm border-2 border-[var(--orange)] bg-[var(--orange)] px-4 py-2 text-center font-spec text-[13px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)]"
+            className="mt-2 rounded-sm border-2 border-[var(--brand)] bg-[var(--brand)] px-4 py-2 text-center font-spec text-[13px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)]"
           >
             Book Repair
           </a>

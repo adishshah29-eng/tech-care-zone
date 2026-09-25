@@ -4,7 +4,7 @@ import { appleDevices, laptopBrands, type DeviceEntry } from "@/lib/content";
 
 function DeviceRow({ device, tone }: { device: DeviceEntry; tone: "orange" | "blue" }) {
   const Icon = deviceIconMap[device.icon];
-  const accent = tone === "orange" ? "var(--orange)" : "var(--blue)";
+  const accent = tone === "orange" ? "var(--brand)" : "var(--navy)";
 
   return (
     <li className="flex items-center gap-4 border-b border-dashed border-[var(--paper-line-strong)] py-3.5 last:border-b-0">
@@ -30,7 +30,7 @@ export function Devices() {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
           <div>
-            <h3 className="font-spec text-[13px] uppercase tracking-[0.08em] text-[var(--orange)]">
+            <h3 className="font-spec text-[13px] uppercase tracking-[0.08em] text-[var(--brand)]">
               Apple Devices
             </h3>
             <ul className="mt-4 border-t border-[var(--paper-line-strong)]">
@@ -41,7 +41,7 @@ export function Devices() {
           </div>
 
           <div>
-            <h3 className="font-spec text-[13px] uppercase tracking-[0.08em] text-[var(--blue)]">
+            <h3 className="font-spec text-[13px] uppercase tracking-[0.08em] text-[var(--navy)]">
               Laptop Brands We Repair
             </h3>
             <ul className="mt-4 border-t border-[var(--paper-line-strong)]">

@@ -7,7 +7,7 @@ import { appleServices, laptopServices, type Service } from "@/lib/content";
 
 function ServiceTile({ service, tone }: { service: Service; tone: "orange" | "blue" }) {
   const Icon = serviceIconMap[service.icon];
-  const accent = tone === "orange" ? "var(--orange)" : "var(--blue)";
+  const accent = tone === "orange" ? "var(--brand)" : "var(--navy)";
 
   return (
     <div className="relative pt-2">
@@ -54,6 +54,7 @@ export function Services() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
+            art={false}
             title="Expert repair services"
             lede="From cracked screens to complex motherboard repairs — Apple devices & all major laptop brands covered."
           />
@@ -68,8 +69,8 @@ export function Services() {
                 className={`rounded-sm px-4 py-2 transition-colors ${
                   tab === key
                     ? key === "apple"
-                      ? "bg-[var(--orange)] text-[var(--paper-raised)]"
-                      : "bg-[var(--blue)] text-[var(--paper-raised)]"
+                      ? "bg-[var(--brand)] text-[var(--paper-raised)]"
+                      : "bg-[var(--navy)] text-[var(--paper-raised)]"
                     : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
                 }`}
               >

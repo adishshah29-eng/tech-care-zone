@@ -4,17 +4,21 @@ import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import { MapPin, Phone, MessageCircle, Mail, Clock, ArrowRight } from "../icons";
 import { SectionHead2 } from "./SectionHead2";
-import { business, deviceOptions, issueOptions } from "@/lib/content";
+import { business, deviceOptions, issueOptions, readBookingForm, whatsappBookingUrl } from "@/lib/content";
 
 const fieldClass =
   "w-full rounded border border-[var(--v2-border)] bg-[var(--v2-bg)] px-3.5 py-2.5 text-[0.95rem] text-[var(--v2-ink)] placeholder:text-[var(--v2-ink-faint)] focus:border-[var(--v2-amber)] focus:outline-none";
 
 export function Booking2() {
   const [submitted, setSubmitted] = useState(false);
+  const [waUrl, setWaUrl] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const url = whatsappBookingUrl(readBookingForm(e.currentTarget));
+    setWaUrl(url);
     setSubmitted(true);
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -70,7 +74,7 @@ export function Booking2() {
                   Request logged.
                 </p>
                 <p className="mt-2 text-[0.95rem] text-[var(--v2-ink-soft)]">
-                  We&apos;ll get back to you within minutes. For anything urgent,
+                  WhatsApp should open with your details filled in, just hit send. <a href={waUrl} target="_blank" rel="noreferrer" className="underline">Didn&apos;t open? Tap here.</a> For anything urgent,
                   call or WhatsApp us at {business.phone}.
                 </p>
               </div>

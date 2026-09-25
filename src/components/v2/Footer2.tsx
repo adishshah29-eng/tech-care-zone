@@ -1,4 +1,5 @@
 import { business, footerLinks } from "@/lib/content";
+import { Logo } from "@/components/Logo";
 
 function Col({ title, items }: { title: string; items: string[] }) {
   return (
@@ -24,10 +25,7 @@ export function Footer2() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <span className="v2-mono flex h-9 w-9 items-center justify-center rounded border border-[var(--v2-amber)] text-[13px] font-bold text-[var(--v2-amber)]">
-                {business.shortName}
-              </span>
-              <span className="text-[1rem] font-bold text-[var(--v2-ink)]">{business.name}</span>
+              <Logo variant="light" full className="h-14 w-auto" />
             </div>
             <p className="mt-4 max-w-xs text-[0.9rem] leading-relaxed text-[var(--v2-ink-soft)]">
               Mumbai&apos;s most trusted Apple device repair centre. We fix

@@ -3,6 +3,7 @@
 import { ArrowRight } from "./icons";
 import { business, stats } from "@/lib/content";
 import { useReveal } from "@/lib/useReveal";
+import { HeroBoardArt } from "./HeroBoardArt";
 
 const faultCallouts = [
   { n: "1", label: "Screen" },
@@ -36,14 +37,14 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="stamp-btn inline-flex items-center gap-2 rounded-sm bg-[var(--orange)] px-6 py-3 font-spec text-[14px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)] transition-transform hover:-rotate-1"
+              className="stamp-btn inline-flex items-center gap-2 rounded-sm bg-[var(--brand)] px-6 py-3 font-spec text-[14px] font-semibold uppercase tracking-[0.06em] text-[var(--paper-raised)] transition-transform hover:-rotate-1"
             >
               Book a Repair
               <ArrowRight size={16} />
             </a>
             <a
               href="#services"
-              className="font-spec text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--ink)] underline decoration-[var(--ink-faint)] decoration-2 underline-offset-4 transition-colors hover:decoration-[var(--orange)]"
+              className="font-spec text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--ink)] underline decoration-[var(--ink-faint)] decoration-2 underline-offset-4 transition-colors hover:decoration-[var(--brand)]"
             >
               Explore Services
             </a>
@@ -65,66 +66,12 @@ export function Hero() {
         </div>
 
         <div ref={artRef} className="reveal relative mx-auto w-full max-w-md lg:max-w-none" style={{ transitionDelay: "120ms" }}>
-          <svg
-            viewBox="0 0 460 420"
-            className="w-full"
-            role="img"
-            aria-label="Diagram of a phone and laptop with numbered fault callouts for screen, battery, water damage and motherboard"
-          >
-            <rect x="0" y="0" width="460" height="420" fill="var(--paper-raised)" stroke="var(--paper-line-strong)" rx="6" />
-
-            {/* laptop */}
-            <g>
-              <path
-                d="M60 300 L340 300 L360 320 L40 320 Z"
-                fill="none"
-                stroke="var(--ink)"
-                strokeWidth="2"
-              />
-              <rect x="80" y="160" width="240" height="140" rx="4" fill="none" stroke="var(--ink)" strokeWidth="2" />
-              <rect x="94" y="174" width="212" height="112" rx="2" fill="var(--paper)" stroke="var(--ink-faint)" strokeWidth="1.5" />
-            </g>
-
-            {/* phone */}
-            <g>
-              <rect x="290" y="60" width="110" height="220" rx="16" fill="var(--paper)" stroke="var(--ink)" strokeWidth="2.5" />
-              <rect x="302" y="80" width="86" height="180" rx="3" fill="var(--paper-raised)" stroke="var(--ink-faint)" strokeWidth="1.5" />
-              <rect x="330" y="70" width="30" height="6" rx="3" fill="var(--ink-faint)" />
-            </g>
-
-            {/* leaders */}
-            <line x1="345" y1="95" x2="410" y2="60" className="leader-line" />
-            <line x1="345" y1="160" x2="430" y2="140" className="leader-line" />
-            <line x1="200" y1="180" x2="130" y2="115" className="leader-line" />
-            <line x1="240" y1="230" x2="330" y2="250" className="leader-line" />
-
-            {/* numbered callouts */}
-            {[
-              { cx: 420, cy: 50 },
-              { cx: 440, cy: 130 },
-              { cx: 120, cy: 100 },
-              { cx: 342, cy: 258 },
-            ].map((pos, i) => (
-              <g key={i}>
-                <circle cx={pos.cx} cy={pos.cy} r="13" fill="var(--orange)" />
-                <text
-                  x={pos.cx}
-                  y={pos.cy + 4}
-                  textAnchor="middle"
-                  fontSize="13"
-                  fontFamily="var(--font-spec)"
-                  fill="var(--paper-raised)"
-                >
-                  {i + 1}
-                </text>
-              </g>
-            ))}
-          </svg>
+          <HeroBoardArt />
 
           <ul className="font-spec mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.06em] text-[var(--ink-soft)]">
             {faultCallouts.map((f) => (
               <li key={f.n} className="flex items-center gap-1.5">
-                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--orange)] text-[10px] text-[var(--paper-raised)]">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--brand)] text-[10px] text-[var(--paper-raised)]">
                   {f.n}
                 </span>
                 {f.label}

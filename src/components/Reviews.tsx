@@ -5,7 +5,7 @@ function RatingPunch() {
   return (
     <div className="flex gap-1" role="img" aria-label="5 out of 5 rating">
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i} className="h-2.5 w-2.5 rounded-[2px] bg-[var(--orange)]" />
+        <span key={i} className="h-2.5 w-2.5 rounded-[2px] bg-[var(--brand)]" />
       ))}
     </div>
   );

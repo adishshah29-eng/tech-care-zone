@@ -21,7 +21,7 @@ export function Process() {
             return (
               <li key={item.step} className="relative flex flex-col gap-3">
                 <div className="relative z-10 flex items-center gap-3">
-                  <span className="font-spec flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[var(--orange)] bg-[var(--paper-raised)] text-[15px] font-semibold text-[var(--orange)]">
+                  <span className="font-spec flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[var(--brand)] bg-[var(--paper-raised)] text-[15px] font-semibold text-[var(--brand)]">
                     {item.step}
                   </span>
                   <Icon size={22} strokeWidth={1.75} className="text-[var(--ink-soft)]" />

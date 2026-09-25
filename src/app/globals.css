@@ -8,13 +8,14 @@
   --ink: #201f1b;
   --ink-soft: #5c584c;
   --ink-faint: #8b8676;
-  --orange: #e8590c;
-  --orange-ink: #7a2c05;
-  --blue: #1f5c6b;
-  --blue-ink: #123943;
+  --brand: #2f63a6;
+  --brand-ink: #232a5c;
+  --navy: #232a5c;
+  --navy-ink: #151a3d;
+  --logo-blue: #4a87be;
   --green: #2f6b46;
   --green-ink: #1c4029;
-  --focus-ring: #e8590c;
+  --focus-ring: #4a87be;
 }
 
 @theme inline {
@@ -22,8 +23,8 @@
   --color-paper-raised: var(--paper-raised);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-orange: var(--orange);
-  --color-blue: var(--blue);
+  --color-brand: var(--brand);
+  --color-navy: var(--navy);
   --color-green: var(--green);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -66,7 +67,7 @@ h4 {
 }
 
 ::selection {
-  background: var(--orange);
+  background: var(--brand);
   color: var(--paper-raised);
 }
 
@@ -161,6 +162,42 @@ h4 {
   .reveal {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+}
+
+.pcb-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.pcb-wrap.is-drawn .pcb-draw {
+  animation: pcb-draw 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.pcb-part {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.9s;
+}
+
+.pcb-wrap.is-drawn .pcb-part {
+  opacity: 1;
+}
+
+@keyframes pcb-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcb-draw {
+    stroke-dashoffset: 0;
+    animation: none !important;
+  }
+  .pcb-part {
+    opacity: 1;
     transition: none;
   }
 }

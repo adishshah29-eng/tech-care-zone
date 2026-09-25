@@ -291,3 +291,36 @@ export const footerLinks = {
   ],
   company: ["About Us", "Why Choose Us", "Reviews", "Contact", "Privacy Policy"],
 };
+
+export type BookingFields = {
+  name: string;
+  phone: string;
+  device: string;
+  issue: string;
+  description: string;
+};
+
+export function whatsappBookingUrl(f: BookingFields) {
+  const lines = [
+    "Hello Tech Care Zone, I'd like to book a repair.",
+    "",
+    `Name: ${f.name}`,
+    `Phone: ${f.phone}`,
+    `Device: ${f.device}`,
+    `Issue: ${f.issue}`,
+    ...(f.description.trim() ? [`Details: ${f.description.trim()}`] : []),
+  ];
+  return `${business.whatsappHref}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+
+export function readBookingForm(form: HTMLFormElement): BookingFields {
+  const fd = new FormData(form);
+  const get = (k: string) => String(fd.get(k) ?? "");
+  return {
+    name: get("name"),
+    phone: get("phone"),
+    device: get("device"),
+    issue: get("issue"),
+    description: get("description"),
+  };
+}
