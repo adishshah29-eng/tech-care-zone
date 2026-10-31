@@ -1,12 +1,33 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import { deviceIconMap } from "../icons";
+import { DeviceArt2, DeviceLineup2, deviceArt } from "./DeviceArt2";
 import { SectionHead2 } from "./SectionHead2";
 import { appleDevices, laptopBrands, type DeviceEntry } from "@/lib/content";
 
-function Row({ device }: { device: DeviceEntry }) {
+function Row({
+  device,
+  active,
+  onActivate,
+}: {
+  device: DeviceEntry;
+  active: boolean;
+  onActivate: (name: string | null) => void;
+}) {
   const Icon = deviceIconMap[device.icon];
   return (
-    <li className="flex items-center gap-4 border-b border-[var(--v2-border)] py-3.5 last:border-b-0">
+    <li
+      tabIndex={0}
+      onMouseEnter={() => onActivate(device.name)}
+      onMouseLeave={() => onActivate(null)}
+      onFocus={() => onActivate(device.name)}
+      onBlur={() => onActivate(null)}
+      onClick={() => onActivate(device.name)}
+      className={`flex cursor-pointer items-center gap-4 border-b border-[var(--v2-border)] py-3.5 transition-colors last:border-b-0 focus-visible:outline focus-visible:outline-1 focus-visible:outline-[var(--v2-amber)] ${
+        active ? "bg-white/[0.04]" : ""
+      }`}
+    >
       <Icon size={18} strokeWidth={1.7} className="shrink-0 text-[var(--v2-amber)]" />
       <span className="flex-1 text-[0.95rem] font-medium text-[var(--v2-ink)]">
         {device.name}
@@ -19,6 +40,7 @@ function Row({ device }: { device: DeviceEntry }) {
 }
 
 export function Devices2() {
+  const [active, setActive] = useState<string | null>(null);
   return (
     <section id="devices" className="border-b border-[var(--v2-border)] py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -29,13 +51,28 @@ export function Devices2() {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="relative aspect-[4/3] overflow-hidden rounded border border-[var(--v2-border)]">
-            <Image
-              src="/v2/circuit.webp"
-              alt="Macro photo of an iPhone motherboard during repair"
-              fill
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover"
-            />
+            <div
+              data-art="default"
+              className={`absolute inset-0 flex items-center p-6 transition-opacity duration-500 ${
+                active ? "opacity-20" : "opacity-100"
+              }`}
+            >
+              <DeviceLineup2 />
+            </div>
+            {Object.entries(deviceArt).map(([name, spec]) => (
+              <div
+                key={name}
+                data-art={name}
+                className={`absolute inset-0 z-10 p-6 transition-opacity duration-500 ${
+                  active === name ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <DeviceArt2 spec={spec} />
+                <span className="v2-mono absolute bottom-4 left-5 text-[11px] uppercase tracking-[0.1em] text-[var(--v2-amber)]">
+                  {name}
+                </span>
+              </div>
+            ))}
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--v2-bg)]/70 via-transparent to-transparent" />
           </div>
 
@@ -46,7 +83,7 @@ export function Devices2() {
               </h3>
               <ul className="mt-4 border-t border-[var(--v2-border)]">
                 {appleDevices.map((d) => (
-                  <Row key={d.name} device={d} />
+                  <Row key={d.name} device={d} active={active === d.name} onActivate={setActive} />
                 ))}
               </ul>
             </div>
@@ -57,7 +94,7 @@ export function Devices2() {
               </h3>
               <ul className="mt-4 border-t border-[var(--v2-border)]">
                 {laptopBrands.map((d) => (
-                  <Row key={d.name} device={d} />
+                  <Row key={d.name} device={d} active={active === d.name} onActivate={setActive} />
                 ))}
               </ul>
               <p className="mt-5 border-t border-[var(--v2-border)] pt-4 text-[0.9rem] text-[var(--v2-ink-soft)]">
