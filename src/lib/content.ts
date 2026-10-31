@@ -7,7 +7,8 @@ export const business = {
   tagline: "We Fix, We Care, We Innovate",
   phone: "+91 99672 34177",
   phoneHref: "+919967234177",
-  whatsappHref: "https://wa.me/919967234177",
+  whatsapp: "+91 87791 92985",
+  whatsappHref: "https://wa.me/918779192985",
   addressLines: [
     "1st Floor, Powai Plaza, 184,",
     "Hiranandani Gardens, Mumbai,",
