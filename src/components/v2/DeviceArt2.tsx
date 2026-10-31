@@ -44,7 +44,7 @@ function Callouts({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: 
   );
 }
 
-function Phone({ variant }: { variant?: ArtSpec["variant"] }) {
+function Phone({ variant, bare }: { variant?: ArtSpec["variant"]; bare?: boolean }) {
   return (
     <g fill="none" stroke={LINE} strokeWidth="2">
       <rect x="150" y="38" width="100" height="224" rx="18" />
@@ -56,12 +56,12 @@ function Phone({ variant }: { variant?: ArtSpec["variant"] }) {
       )}
       <path d="M170 110 h60 M170 128 h44 M170 146 h52" stroke={LINE} opacity=".35" />
       <path d="M152 100 v14 M152 124 v14" stroke={LINE} />
-      <Callouts x1={110} y1={90} x2={290} y2={215} />
+      {!bare && <Callouts x1={110} y1={90} x2={290} y2={215} />}
     </g>
   );
 }
 
-function Tablet({ variant }: { variant?: ArtSpec["variant"] }) {
+function Tablet({ variant, bare }: { variant?: ArtSpec["variant"]; bare?: boolean }) {
   const pro = variant === "pro";
   const w = pro ? 250 : 220;
   const h = pro ? 182 : 160;
@@ -74,12 +74,12 @@ function Tablet({ variant }: { variant?: ArtSpec["variant"] }) {
       <rect x={x + b} y={y + b} width={w - b * 2} height={h - b * 2} rx="8" fill={SCREEN} />
       <circle cx={x + w / 2} cy={y + b / 2 + 0.5} r="1.8" fill={LINE} stroke="none" />
       <path d={`M${x + 30} ${y + 55} h90 M${x + 30} ${y + 75} h60`} opacity=".35" />
-      <Callouts x1={x - 36} y1={y + 40} x2={x + w + 36} y2={y + h - 40} />
+      {!bare && <Callouts x1={x - 36} y1={y + 40} x2={x + w + 36} y2={y + h - 40} />}
     </g>
   );
 }
 
-function MacBook({ variant }: { variant?: ArtSpec["variant"] }) {
+function MacBook({ variant, bare }: { variant?: ArtSpec["variant"]; bare?: boolean }) {
   const pro = variant === "pro";
   return (
     <g fill="none" stroke={LINE} strokeWidth="2">
@@ -93,12 +93,12 @@ function MacBook({ variant }: { variant?: ArtSpec["variant"] }) {
         <path d="M70 202 h260 l-4 10 a6 6 0 0 1 -5 3 h-242 a6 6 0 0 1 -5 -3z" />
       )}
       <path d="M178 202 h44 v4 h-44z" fill={LINE} stroke="none" opacity=".6" />
-      <Callouts x1={70} y1={100} x2={330} y2={165} />
+      {!bare && <Callouts x1={70} y1={100} x2={330} y2={165} />}
     </g>
   );
 }
 
-function IMac() {
+function IMac({ bare }: { bare?: boolean }) {
   return (
     <g fill="none" stroke={LINE} strokeWidth="2">
       <rect x="85" y="40" width="230" height="150" rx="10" />
@@ -107,12 +107,12 @@ function IMac() {
       <path d="M180 190 l-10 54 h60 l-10 -54" />
       <path d="M150 244 h100" />
       <path d="M110 80 h90 M110 98 h60" opacity=".35" />
-      <Callouts x1={55} y1={90} x2={345} y2={150} />
+      {!bare && <Callouts x1={55} y1={90} x2={345} y2={150} />}
     </g>
   );
 }
 
-function Laptop({ mark }: { mark?: string }) {
+function Laptop({ mark, bare }: { mark?: string; bare?: boolean }) {
   return (
     <g fill="none" stroke={LINE} strokeWidth="2">
       <rect x="98" y="66" width="204" height="134" rx="6" />
@@ -133,7 +133,7 @@ function Laptop({ mark }: { mark?: string }) {
           {mark}
         </text>
       )}
-      <Callouts x1={66} y1={105} x2={334} y2={170} />
+      {!bare && <Callouts x1={66} y1={105} x2={334} y2={170} />}
     </g>
   );
 }
@@ -146,6 +146,18 @@ export function DeviceArt2({ spec }: { spec: ArtSpec }) {
       {spec.kind === "macbook" && <MacBook variant={spec.variant} />}
       {spec.kind === "imac" && <IMac />}
       {spec.kind === "laptop" && <Laptop mark={spec.mark} />}
+    </svg>
+  );
+}
+
+// Shown when no device is hovered: the main device families side by side.
+export function DeviceLineup2() {
+  return (
+    <svg viewBox="0 0 400 300" className="h-full w-full" role="img" aria-label="Tablet, iMac, MacBook and iPhone line drawings">
+      <svg x="-30" y="-10" width="200" height="150" viewBox="0 0 400 300"><Tablet variant="pro" bare /></svg>
+      <svg x="110" y="0" width="240" height="180" viewBox="0 0 400 300"><IMac bare /></svg>
+      <svg x="-10" y="100" width="240" height="180" viewBox="0 0 400 300"><MacBook variant="pro" bare /></svg>
+      <svg x="170" y="125" width="240" height="180" viewBox="0 0 400 300"><Phone variant="island" bare /></svg>
     </svg>
   );
 }

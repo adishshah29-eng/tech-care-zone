@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { deviceIconMap } from "../icons";
-import { DeviceArt2, deviceArt } from "./DeviceArt2";
+import { DeviceArt2, DeviceLineup2, deviceArt } from "./DeviceArt2";
 import { SectionHead2 } from "./SectionHead2";
 import { appleDevices, laptopBrands, type DeviceEntry } from "@/lib/content";
 
@@ -52,16 +51,14 @@ export function Devices2() {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="relative aspect-[4/3] overflow-hidden rounded border border-[var(--v2-border)]">
-            <Image
-              src="/v2/circuit.webp"
-              alt="Macro photo of an iPhone motherboard during repair"
-              fill
-              sizes="(min-width: 1024px) 40vw, 100vw"
+            <div
               data-art="default"
-              className={`object-cover transition-opacity duration-500 ${
+              className={`absolute inset-0 flex items-center p-6 transition-opacity duration-500 ${
                 active ? "opacity-20" : "opacity-100"
               }`}
-            />
+            >
+              <DeviceLineup2 />
+            </div>
             {Object.entries(deviceArt).map(([name, spec]) => (
               <div
                 key={name}
