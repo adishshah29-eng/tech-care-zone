@@ -49,7 +49,7 @@ export function Booking2() {
             </ContactRow>
             <ContactRow icon={MessageCircle} label="WhatsApp">
               <a href={business.whatsappHref} target="_blank" rel="noreferrer" className="hover:text-[var(--v2-amber)]">
-                {business.phone}
+                {business.whatsapp}
               </a>
               <span className="block text-[var(--v2-ink-faint)]">Chat for quick quotes</span>
             </ContactRow>
@@ -75,7 +75,7 @@ export function Booking2() {
                 </p>
                 <p className="mt-2 text-[0.95rem] text-[var(--v2-ink-soft)]">
                   WhatsApp should open with your details filled in, just hit send. <a href={waUrl} target="_blank" rel="noreferrer" className="underline">Didn&apos;t open? Tap here.</a> For anything urgent,
-                  call or WhatsApp us at {business.phone}.
+                  call {business.phone} or WhatsApp {business.whatsapp}.
                 </p>
               </div>
             ) : (
