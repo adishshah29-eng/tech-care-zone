@@ -5,8 +5,8 @@ export const business = {
   name: "Tech Care Zone",
   shortName: "TCZ",
   tagline: "We Fix, We Care, We Innovate",
-  phone: "+91 99672 34177",
-  phoneHref: "+919967234177",
+  phone: "+91 87791 92985",
+  phoneHref: "+918779192985",
   whatsapp: "+91 87791 92985",
   whatsappHref: "https://wa.me/918779192985",
   addressLines: [
